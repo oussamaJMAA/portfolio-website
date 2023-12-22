@@ -1,8 +1,5 @@
-Pillow==8.3.1
-streamlit==1.21.0
-streamlit-lottie==0.0.3
-streamlit-option-menu==0.3.2
-streamlit-on-Hover-tabs==1.0.1
-requests==2.28.2
-streamlit-analytics
-streamlit-extras
+Pillow==10.1.0
+Requests==2.31.0
+streamlit==1.29.0
+streamlit_extras==0.3.6
+streamlit_option_menu==0.3.6
