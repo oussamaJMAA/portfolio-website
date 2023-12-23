@@ -687,7 +687,16 @@ elif choose == "Contact":
             #     else:
             #         st.write("No contacts found.")
 
-
+            contact_form = """
+            <form action="https://formsubmit.co/jemaaoussama64@gmail.com" method="POST">
+            <input type="hidden" name="_captcha value="false">
+            <input type="text" name="name" placeholder="Your name" required>
+            <input type="text" name="email" placeholder="Your email" required>
+            <textarea name="message" placeholder="Your message here" required></textarea>
+            <button type="submit" >Send a Message</button>
+            </form>
+            """
+            st.markdown(contact_form, unsafe_allow_html=True)
             st.write("Alternatively, feel free to check out my social accounts below!")
             linkedin_url = "https://www.linkedin.com/in/oussama-jmaa-217098171/"
             github_url = "https://github.com/oussamaJMAA"
