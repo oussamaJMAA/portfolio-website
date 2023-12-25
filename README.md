@@ -1,6 +1,8 @@
 # Streamlit Portfolio & Chatbot
 
 Welcome to my personal portfolio website crafted with Streamlit and enhanced with an interactive chatbot feature using Langchain. This site showcases my professional journey, skills, projects, and educational background. The integrated chatbot serves as your guide, ready to answer questions about my experience and expertise.
+![Project Image]([https://example.com/path/to/image.png](https://drive.google.com/file/d/1fTshLsTDLHuVnVrRxLrl-lGi4F7eGd4C/view?usp=sharing))
+![Project Image]([https://example.com/path/to/image.png](https://drive.google.com/file/d/1XN9xJob4Fp2ALF-iFBG9iXyYywE5ST-l/view?usp=sharing))
 
 ## Features
 
