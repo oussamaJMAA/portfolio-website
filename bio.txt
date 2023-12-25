@@ -1,0 +1,38 @@
+the following is a bio represnting oussama's skills :
+About Oussama:
+Oussama is a final year Data Science student at Esprit School of Engineering, actively seeking an end-of-studies internship and the chance to start my career in AI. He's passionate about learning new tech and applying my knowledge in practical ways , i'm interested in data science and through the years i have done multiple machine learning, deep learning and natural language processing (nlp) projects 
+
+Work Experience:
+Data Science intern at Sagemcom ; Data science intern at coopva ; Web development intern at Telecom 
+
+Career Goal:
+Oussama's career goal is to leverage their expertise in AI and emerging technologies to drive meaningful innovation and create solutions that positively impact businesses and society.
+
+Skills: 
+AI, Data Science, NLP, Cloud, Python , Web development
+
+Certification:
+Machine learning specialization from coursera (2023)
+Deep learning specialization from coursera (2023)
+NLP specialization  from coursera (2023)
+
+
+Contact:
+LinkedIn: https://www.linkedin.com/in/oussama-jmaa-217098171/
+Phone: +21655919740
+Location: Ariana, Tunisia
+
+Strengths and Advantages:
+Oussama's strengths lie in a profound passion for technology, innovative problem-solving, and client-centric solutions.
+
+Weaknesses and Disadvantages:
+Oussama's unwavering pursuit of excellence may occasionally lead to in-depth analysis, but it ensures the delivery of high-quality services.
+
+Interests and Hobbies:
+Oussama's passion for technology extends into leisure hours, where they delve into the cutting-edge realm of GenAI, continuously pushing the boundaries of what can be achieved in various projects. In addition, Oussama finds joy in the simple pleasures of life, such as playing football , video games, swimming, and sharing coffee moments with friends and family.
+
+Portfolio:
+Explore Oussama's portfolio of innovative and data science practical projects at https://oussamajmaa.streamlit.app/
+
+Availability:
+Oussama is actively seeking new opportunities and is ready to start immediately.

@@ -4,8 +4,15 @@ import requests
 from PIL import Image
 import base64
 from streamlit_extras.mention import mention
-
-
+from dotenv import load_dotenv
+from PyPDF2 import PdfReader
+from langchain.text_splitter import CharacterTextSplitter
+from langchain.embeddings import OpenAIEmbeddings
+from langchain.vectorstores import FAISS
+from langchain.chat_models import ChatOpenAI
+from langchain.memory import ConversationBufferMemory
+from langchain.chains import ConversationalRetrievalChain
+from htmlTemplates import css, bot_template
 #test
 
 # Set page title
@@ -13,6 +20,57 @@ st.set_page_config(page_title="Oussama Jmaa", page_icon = "desktop_computer", la
 
 # Use the following line to include your style.css file
 st.markdown('<style>' + open('style.css').read() + '</style>', unsafe_allow_html=True)
+
+def get_pdf_text(pdf=r"C:\work\portfolio-website\Oussama_cv.pdf"):
+    pdf = PdfReader(pdf)
+    text = ""
+    for page in pdf.pages:
+        text += page.extract_text()
+    with open("bio.txt", "r") as f:
+        bio_text = f.read()
+    combined_text = bio_text + "\n\n" + "this is oussama's resume :\n" +text
+    return combined_text
+
+
+def get_text_chunks(text):
+    text_splitter = CharacterTextSplitter(
+        separator="\n",
+        chunk_size=500,
+        chunk_overlap=200,
+        length_function=len
+    )
+    chunks = text_splitter.split_text(text)
+    return chunks
+
+
+def get_vectorstore(text_chunks):
+    embeddings = OpenAIEmbeddings()
+  
+    vectorstore = FAISS.from_texts(texts=text_chunks, embedding=embeddings)
+    return vectorstore
+
+
+def get_conversation_chain(vectorstore):
+    llm = ChatOpenAI()
+
+    memory = ConversationBufferMemory(
+        memory_key='chat_history', return_messages=True)
+    conversation_chain = ConversationalRetrievalChain.from_llm(
+        llm=llm,
+        retriever=vectorstore.as_retriever(),
+        memory=memory
+    )
+    return conversation_chain
+
+
+def handle_userinput(user_question):
+    response = st.session_state.conversation({'question': user_question})
+
+    st.session_state.chat_history = response['chat_history']
+   
+    st.write(bot_template.replace(
+                "{{MSG}}", st.session_state.chat_history[1].content), unsafe_allow_html=True)
+
 
 def load_lottieurl(url):
     r = requests.get(url)
@@ -183,7 +241,7 @@ with st.sidebar:
     
     choose = option_menu(
                         "Oussama Jmaa", 
-                        ["About Me", "Experience", "Technical Skills", "Projects", "Resume", "Certificates", "Contact"],
+                        ["About Me", "Experience", "Technical Skills", "Projects", "Resume", "Certificates", "Contact","Interview ChatBot"],
                          icons=['person fill', 'globe', 'clock history', 'tools', 'book half', 'clipboard', 'trophy fill', 'heart', 'pencil square', 'image', 'paperclip', 'star fill', 'envelope'],
                          menu_icon="mortarboard", 
                          default_index=0,
@@ -593,8 +651,7 @@ elif choose == "Certificates":
             st.subheader("SQL Certification")
             show_pdf("sql.pdf")
 elif choose == "Contact":
-# Create section for Contact
-    #st.write("---")
+
     st.header("Contact")
     def social_icons(width=24, height=24, **kwargs):
         icon_template = '''
@@ -619,74 +676,7 @@ elif choose == "Contact":
         text_column, mid, image_column = st.columns((1,0.2,0.5))
         with text_column:
             st.write("Let's connect! You may either reach out to me at jemaaoussama64@gmail.com or use the form below!")
-            #with st.form(key='columns_in_form2',clear_on_submit=True): #set clear_on_submit=True so that the form will be reset/cleared once it's submitted
-                #st.write('Please help us improve!')
-                #Name=st.text_input(label='Your Name',
-                                    #max_chars=100, type="default") #Collect user feedback
-                #Email=st.text_input(label='Your Email', 
-                                    #max_chars=100,type="default") #Collect user feedback
-                #Message=st.text_input(label='Your Message',
-                                        #max_chars=500, type="default") #Collect user feedback
-                #submitted = st.form_submit_button('Submit')
-                #if submitted:
-                    #st.write('Thanks for your contacting us. We will respond to your questions or inquiries as soon as possible!')
-            # def create_database_and_table():
-            #     conn = sqlite3.connect('contact_form.db')
-            #     c = conn.cursor()
-            #     c.execute('''CREATE TABLE IF NOT EXISTS contacts
-            #                 (name TEXT, email TEXT, message TEXT)''')
-            #     conn.commit()
-            #     conn.close()
-            # create_database_and_table()
-
-            # st.subheader("Contact Form")
-            # if "name" not in st.session_state:
-            #     st.session_state["name"] = ""
-            # if "email" not in st.session_state:
-            #     st.session_state["email"] = ""
-            # if "message" not in st.session_state:
-            #     st.session_state["message"] = ""
-            # st.session_state["name"] = st.text_input("Name", st.session_state["name"])
-            # st.session_state["email"] = st.text_input("Email", st.session_state["email"])
-            # st.session_state["message"] = st.text_area("Message", st.session_state["message"])
-
-
-            # column1, column2= st.columns([1,5])
-            # if column1.button("Submit"):
-            #     conn = sqlite3.connect('contact_form.db')
-            #     c = conn.cursor()
-            #     c.execute("INSERT INTO contacts (name, email, message) VALUES (?, ?, ?)",
-            #             (st.session_state["name"], st.session_state["email"], st.session_state["message"]))
-            #     conn.commit()
-            #     conn.close()
-            #     st.success("Your message has been sent!")
-            #     # Clear the input fields
-            #     st.session_state["name"] = ""
-            #     st.session_state["email"] = ""
-            #     st.session_state["message"] = ""
-            # def fetch_all_contacts():
-            #     conn = sqlite3.connect('contact_form.db')
-            #     c = conn.cursor()
-            #     c.execute("SELECT * FROM contacts")
-            #     rows = c.fetchall()
-            #     conn.close()
-            #     return rows
             
-            # if "show_contacts" not in st.session_state:
-            #     st.session_state["show_contacts"] = False
-            # if column2.button("View Submitted Forms"):
-            #     st.session_state["show_contacts"] = not st.session_state["show_contacts"]
-            
-            # if st.session_state["show_contacts"]:
-            #     all_contacts = fetch_all_contacts()
-            #     if len(all_contacts) > 0:
-            #         table_header = "| Name | Email | Message |\n| --- | --- | --- |\n"
-            #         table_rows = "".join([f"| {contact[0]} | {contact[1]} | {contact[2]} |\n" for contact in all_contacts])
-            #         markdown_table = f"**All Contact Form Details:**\n\n{table_header}{table_rows}"
-            #         st.markdown(markdown_table)
-            #     else:
-            #         st.write("No contacts found.")
-
             contact_form = """
             <form action="https://formsubmit.co/jemaaoussama64@gmail.com" method="POST">
             <input type="hidden" name="_captcha value="false">
@@ -705,9 +695,41 @@ elif choose == "Contact":
                 social_icons(32, 32, LinkedIn=linkedin_url, GitHub=github_url, Email=email_url),
                 unsafe_allow_html=True)
             st.markdown("")
-            #st.write("© 2023 Harry Chang")
-            #st.write("[LinkedIn](https://linkedin.com/in/harrychangjr) | [Github](https://github.com/harrychangjr) | [Linktree](https://linktr.ee/harrychangjr)")
-       
+
+elif choose =="Interview ChatBot":
+    st.header("Interview ChatBot :book:")
+    st.subheader("This is a chatbot that will help you to get to know me!")
+    st.subheader("Feel free to ask him anything about my experience and knowledge")
+    load_dotenv()
+
+    st.write(css, unsafe_allow_html=True)
+
+    if "conversation" not in st.session_state:
+        st.session_state.conversation = None
+    if "chat_history" not in st.session_state:
+        st.session_state.chat_history = None
+
+    
+    user_question = st.text_input("Ask a question about oussama:")
+    if user_question:
+        raw_text = get_pdf_text()
+
+                # get the text chunks
+        text_chunks = get_text_chunks(raw_text)
+
+                # create vector store
+        vectorstore = get_vectorstore(text_chunks)
+
+                # create conversation chain
+        st.session_state.conversation = get_conversation_chain(
+                    vectorstore)
+        user_prompt = f"""You are an AI assistant dedicated to assisting oussama in his job search by providing recruiters with relevant and concise information. 
+    If you do not know the answer, politely admit it and let recruiters know how to contact oussama to get more information directly from him. 
+    Don't put a breakline in the front of your answer.
+    Human: {user_question}
+    """
+        handle_userinput(user_prompt)
+
 
 st.markdown("*Copyright © 2023 Oussama Jmaa*")
 
