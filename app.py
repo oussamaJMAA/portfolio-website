@@ -283,6 +283,7 @@ if choose == "About Me":
             st.write("👨🏼‍💻 Academic interests: Machine learning, Deep Learning , Natural Language Processing ,Predictive Analysis")
             st.write("💭 Ideal Career Prospects: Data Analyst, Data Scientist, Data Engineer")
             st.write("📄 [Resume (1 page)](https://drive.google.com/file/d/17fhh3GLegzTNB9x4KcNlgRuldHflenOp/view?usp=sharing)")
+            st.markdown('🤖 Check the **interview chatbot** section to interact with an LLM and ask him anything about my experience .')
         with middle_column:
             st.empty()
         with right_column:
@@ -433,7 +434,7 @@ elif choose == "Projects":
             - Employed cosine similarity calculations to assess the degree of alignment between C.V.s and tenders, thus streamlining the matchmaking process.
                         """)
     
-            mention(label="Github Repo", icon="github", url="https://github.com/harrychangjr/sales-prediction",)
+            mention(label="Github Repo", icon="github", url="https://github.com/oussamaJMAA/Identification-of-the-most-relevant-CVs-for-tenders",)
         with image_column:
             st.image(Image.open("images/jobmatching_img.png"))
     with st.container():
