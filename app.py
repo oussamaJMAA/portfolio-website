@@ -445,7 +445,6 @@ elif choose == "Projects":
             st.markdown("""
            - Developed a face mask detection system that utilizes real-time video streams to identify individuals wearing masks, ensuring compliance with health and safety protocols. Established a preprocessing pipeline using OpenCV for image acquisition, manipulation, and augmentation to enhance the diversity of the training dataset.
            - Experimented with various Convolutional Neural Network (CNN) architectures including AlexNet, VGG-16, and ResNet for feature extraction and classification. Benchmarked models to compare accuracy and computational efficiency, optimizing for real-world application constraints.
-           - Implemented and fine-tuned multiple models to achieve high accuracy levels. Employed transfer learning techniques to leverage pre-trained weights on large datasets, accelerating model convergence and improving detection performance in diverse lighting and background conditions.
             """)
         
             mention(label="Github Repo", icon="github", url="https://github.com/oussamaJMAA/face_mask_detection")
