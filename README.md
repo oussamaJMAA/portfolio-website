@@ -2,7 +2,7 @@
 
 Welcome to my personal portfolio website crafted with Streamlit and enhanced with an interactive chatbot feature using Langchain. This site showcases my professional journey, skills, projects, and educational background. The integrated chatbot serves as your guide, ready to answer questions about my experience and expertise.
 
-## Snapchots 
+<br>
 <img width="1280" alt="Capture d'écran 2023-12-25 060901" src="https://github.com/oussamaJMAA/portfolio-website/assets/67621280/dc2e7b9b-c60d-471e-891a-ec18dce4bfcb">
 <br>
 <img width="1280" alt="Capture d'écran 2023-12-25 060846" src="https://github.com/oussamaJMAA/portfolio-website/assets/67621280/f4835688-bf5e-4f88-840f-c7cd2da8bf0a">
