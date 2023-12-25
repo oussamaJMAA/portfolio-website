@@ -3,8 +3,9 @@ from streamlit_option_menu import option_menu
 import requests
 from PIL import Image
 import base64
+import os
 from streamlit_extras.mention import mention
-from dotenv import load_dotenv
+#from dotenv import load_dotenv
 from PyPDF2 import PdfReader
 from langchain.text_splitter import CharacterTextSplitter
 from langchain.embeddings import OpenAIEmbeddings
@@ -700,7 +701,8 @@ elif choose =="Interview ChatBot":
     st.header("Interview ChatBot :book:")
     st.subheader("This is a chatbot that will help you to get to know me!")
     st.subheader("Feel free to ask him anything about my experience and knowledge")
-    load_dotenv()
+    #load_dotenv()
+    os.environ['OPENAI_API_KEY'] = st.secrets['OPENAI_API_KEY']
 
     st.write(css, unsafe_allow_html=True)
 
