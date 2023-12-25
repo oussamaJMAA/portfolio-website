@@ -443,9 +443,9 @@ elif choose == "Projects":
             st.subheader("Computer vision project on Face Mask Detection")
             st.write("*Self-initiated project using MaskedFace-Net dataset*")
             st.markdown("""
-            - Preliminary analysis - comparing word counts, readability scores and sentiment (compound) scores of all 6 article variants using NLTK and Textstat
-            - Generated word clouds to highlight frequently used words in each article variant
-            - Identified top 10 most commonly used words between variants of the same article to assess suitability of ChatGPT in enhancing article quality
+           - Developed a face mask detection system that utilizes real-time video streams to identify individuals wearing masks, ensuring compliance with health and safety protocols. Established a preprocessing pipeline using OpenCV for image acquisition, manipulation, and augmentation to enhance the diversity of the training dataset.
+           - Experimented with various Convolutional Neural Network (CNN) architectures including AlexNet, VGG-16, and ResNet for feature extraction and classification. Benchmarked models to compare accuracy and computational efficiency, optimizing for real-world application constraints.
+           - Implemented and fine-tuned multiple models to achieve high accuracy levels. Employed transfer learning techniques to leverage pre-trained weights on large datasets, accelerating model convergence and improving detection performance in diverse lighting and background conditions.
             """)
         
             mention(label="Github Repo", icon="github", url="https://github.com/oussamaJMAA/face_mask_detection")
