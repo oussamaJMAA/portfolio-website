@@ -22,7 +22,7 @@ st.set_page_config(page_title="Oussama Jmaa", page_icon = "desktop_computer", la
 # Use the following line to include your style.css file
 st.markdown('<style>' + open('style.css').read() + '</style>', unsafe_allow_html=True)
 
-def get_pdf_text(pdf=r"C:\work\portfolio-website\Oussama_cv.pdf"):
+def get_pdf_text(pdf="Oussama_cv.pdf"):
     pdf = PdfReader(pdf)
     text = ""
     for page in pdf.pages:
