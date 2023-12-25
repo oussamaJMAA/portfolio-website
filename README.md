@@ -1,8 +1,8 @@
 # Streamlit Portfolio & Chatbot
 
 Welcome to my personal portfolio website crafted with Streamlit and enhanced with an interactive chatbot feature using Langchain. This site showcases my professional journey, skills, projects, and educational background. The integrated chatbot serves as your guide, ready to answer questions about my experience and expertise.
-![Project Image](https://drive.google.com/file/d/1fTshLsTDLHuVnVrRxLrl-lGi4F7eGd4C/view?usp=sharing)
-![Project Image](https://drive.google.com/file/d/1XN9xJob4Fp2ALF-iFBG9iXyYywE5ST-l/view?usp=sharing)
+<img width="1280" alt="Capture d'écran 2023-12-25 060901" src="https://github.com/oussamaJMAA/portfolio-website/assets/67621280/dc2e7b9b-c60d-471e-891a-ec18dce4bfcb">
+
 
 ## Features
 
