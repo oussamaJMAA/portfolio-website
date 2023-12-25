@@ -7,3 +7,4 @@ Requests==2.31.0
 streamlit==1.29.0
 streamlit_extras==0.3.6
 streamlit_option_menu==0.3.6
+openai
